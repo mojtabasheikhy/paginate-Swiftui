@@ -1,0 +1,28 @@
+
+itemView()
+.onAppear{
+   if i+1 == vpsCargoObservable.vpsCargoList.count {
+      if currentPage+1 <= totalPage {
+            paginationCargo.pageIndex += 1
+            ViewModel.shared.getMoreDat(paginationCargo:paginationCargo )
+   }
+ }
+  }
+} .listRowInsets(EdgeInsets(top: 0, leading: 6, bottom: 6, trailing:6))
+  .listRowBackground(Color.clear)
+   .listRowSeparator(.hidden)
+}
+} header: {}.listRowInsets(EdgeInsets(top: 6, leading: 6, bottom:6, trailing:6))
+                                
+ }
+.listStyle(.grouped)
+.onAppear {
+   UITableView.appearance().backgroundColor = .clear
+}
+.background(Color.background.ignoresSafeArea())
+ .refreshable {
+     paginationCargo.pageIndex = 1
+      getdata()
+                              
+ }
+                            
