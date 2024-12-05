@@ -26,3 +26,32 @@ itemView()
                               
  }
                             
+class SaloonCargoList: ObservableObject {
+    public static var observable = SaloonCargoList()
+    @Published var saloonCargos: [SaloonCargo] = []
+    
+    
+    func addSaloonCargo(_ saloonCargo: [SaloonCargo]) {
+        
+        saloonCargos.append(contentsOf:saloonCargo)
+        objectWillChange.send()
+    }
+    
+    func removeSaloon() {
+        
+        saloonCargos.removeAll()
+        objectWillChange.send()
+    }
+    func refactorSaloonCargo(_ saloonCargo: [SaloonCargo]) {
+        saloonCargos.removeAll()
+        saloonCargos.append(contentsOf:saloonCargo)
+        objectWillChange.send()
+    }
+    
+    func updateSaloonCargo(_ saloonCargo: SaloonCargo) {
+        if let index = saloonCargos.firstIndex(where: { $0.masterId == saloonCargo.masterId }) {
+            saloonCargos[index] = saloonCargo
+            objectWillChange.send()
+        }
+    }
+}
